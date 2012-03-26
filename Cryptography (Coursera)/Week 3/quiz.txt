@@ -19,6 +19,7 @@ x1=00000000000000000000000000000000
 y1=00000000000000000000000000000000
 aes(x1,x1)=66e94bd4ef8a2c3b884cfa59ca342b2e
 x2=00000000000000000000000000000001
+y2=C797D4BD0B7876B00E6C4EF6B2DAD641
 aes(x2,x2)=a17e9f69e4f25a8b8620b4af78eefd6f
 
 y2=66e94bd4ef8a2c3b884cfa59ca342b2e xor 00000000000000000000000000000000 xor a17e9f69e4f25a8b8620b4af78eefd6f
@@ -29,3 +30,10 @@ a17e9f69 e4f25a8b 8620b4af 78eefd6f
 C797D4BD 0B7876B0 0E6C4EF6 B2DAD641
 
 C797D4BD0B7876B00E6C4EF6B2DAD641
+
+q3
+not (r xor t, m) - says m not right half
+not (m xor t, r) - says r not right half
+must be:
+The tag (r⊕m, t) is a valid tag for the 1-block message 0n.
+The tag (r⊕1n, t) is a valid tag for the 1-block message m⊕1n.

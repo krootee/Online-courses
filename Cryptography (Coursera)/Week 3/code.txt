@@ -1,0 +1,7 @@
+from Crypto.Hash import SHA256
+
+def H(str):
+  hash = SHA256.new()
+  hash.update(str)
+  s = bin(int(hash.hexdigest(),16))
+  return s[-50:]

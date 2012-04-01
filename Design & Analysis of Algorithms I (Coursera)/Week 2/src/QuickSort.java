@@ -22,10 +22,12 @@ public class QuickSort {
         System.arraycopy(numbers1, 0, numbers2, 0, numbers1.length);
         System.arraycopy(numbers1, 0, numbers3, 0, numbers1.length);
 
-        partitionFromFirstElement(numbers1, 0, numbers1.length-1);
+        long comparisons1 = partitionFromFirstElement(numbers1, 0, numbers1.length-1);
+        System.out.println("Pivot = first item, comparisons total = " + comparisons1);
         verifySortedArray(numbers1, false);
 
-        partitionFromLastElement(numbers2, 0, numbers2.length-1);
+        long comparisons2 = partitionFromLastElement(numbers2, 0, numbers2.length-1);
+        System.out.println("Pivot = last item, comparisons total = " + comparisons2);
         verifySortedArray(numbers2, false);
     }
 
@@ -55,10 +57,9 @@ public class QuickSort {
         array[index2] = temp;
     }
 
-    private static void partitionFromFirstElement(int[] array, int start, int end) {
+    private static long partitionFromFirstElement(int[] array, int start, int end) {
         if (((end - start) < 1) || (start > end)) {
-//            System.out.println("start = " + start + ", end = " + end);
-            return;
+            return 0;
         }
 
         int partitionValue = array[start];
@@ -73,33 +74,60 @@ public class QuickSort {
 
         swap(array, start, i-1);
 
-        partitionFromFirstElement(array, start, i-2);
-        partitionFromFirstElement(array, i, end);
+        long numberOfComparisons = end - start;
+        numberOfComparisons += partitionFromFirstElement(array, start, i-2);
+        numberOfComparisons += partitionFromFirstElement(array, i, end);
 
-        return;
+        return numberOfComparisons;
     }
 
-    private static void partitionFromLastElement(int[] array, int start, int end) {
+    private static long partitionFromLastElement(int[] array, int start, int end) {
         if (((end - start) < 1) || (start > end)) {
-//            System.out.println("start = " + start + ", end = " + end);
-            return;
+            return 0;
         }
 
-        int partitionValue = array[end];
-        int i = start;
+        swap(array, start, end);
 
-        for (int j = start; j < end; j++) {
+        int partitionValue = array[start];
+        int i = start + 1;
+
+        for (int j = start + 1; j <= end; j++) {
             if (array[j] < partitionValue) {
                 swap(array, j, i);
                 i++;
             }
         }
 
-        swap(array, end, i);
+        swap(array, start, i-1);
 
-        partitionFromFirstElement(array, start, i-1);
-        partitionFromFirstElement(array, i+1, end);
+        long numberOfComparisons = end - start;
+        numberOfComparisons += partitionFromLastElement(array, start, i-2);
+        numberOfComparisons += partitionFromLastElement(array, i, end);
 
-        return;
+        return numberOfComparisons;
     }
+//
+//    private static long partitionFromLastElement_incorrect(int[] array, int start, int end) {
+//        if (((end - start) < 1) || (start > end)) {
+//            return 0;
+//        }
+//
+//        int partitionValue = array[end];
+//        int i = start;
+//
+//        for (int j = start; j < end; j++) {
+//            if (array[j] < partitionValue) {
+//                swap(array, j, i);
+//                i++;
+//            }
+//        }
+//
+//        swap(array, end, i);
+//
+//        long numberOfComparisons = end - start;
+//        numberOfComparisons += partitionFromLastElement(array, start, i-1);
+//        numberOfComparisons += partitionFromLastElement(array, i+1, end);
+//
+//        return numberOfComparisons;
+//    }
 }

@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Design &amp; Analysis of Algorithms I (Coursera)/Week 1/Inversions/Inversions.iml" filepath="$PROJECT_DIR$/Design &amp; Analysis of Algorithms I (Coursera)/Week 1/Inversions/Inversions.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Online-courses.iml" filepath="$PROJECT_DIR$/.idea/Online-courses.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Design &amp; Analysis of Algorithms I (Coursera)/Week 2/QuickSort/QuickSort.iml" filepath="$PROJECT_DIR$/Design &amp; Analysis of Algorithms I (Coursera)/Week 2/QuickSort/QuickSort.iml" />
     </modules>
   </component>
 </project>

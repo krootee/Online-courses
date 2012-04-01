@@ -1,3 +1,11 @@
+/**
+ * Created with IntelliJ IDEA.
+ * User: kroot
+ * Date: 4/1/12
+ * Time: 4:47 PM
+ * To change this template use File | Settings | File Templates.
+ */
+
 import java.util.Scanner;
 
 public class Inversions {
@@ -35,8 +43,8 @@ public class Inversions {
 
         int mid = (start + end) / 2;
         return mergeSort(array, start, mid) +
-               mergeSort(array, mid + 1, end) +
-               merge(array, start, mid, end);
+                mergeSort(array, mid + 1, end) +
+                merge(array, start, mid, end);
     }
 
     private static long merge(int[] array, int start, int mid, int end) {
@@ -46,7 +54,7 @@ public class Inversions {
         int right = mid + 1;
         int current = 0;
         long inversions = 0;
-        
+
         while (left <= mid && right <= end) {
             if (array[left] <= array[right]) {
                 helper[current++] = array[left++];
